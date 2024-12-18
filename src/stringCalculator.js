@@ -1,6 +1,8 @@
 function stringCalculator(input) {
     if (input === '') return 0;
-    return parseInt(input, 10);
-}
 
-module.exports = stringCalculator;
+    const numbers = input.split(',').map(Number);
+    return numbers.reduce((sum, num) => sum + num, 0);
+ }
+
+ module.exports = stringCalculator;
