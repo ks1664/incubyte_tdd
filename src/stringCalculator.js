@@ -11,7 +11,7 @@ function stringCalculator(input) {
         input = parts[1]; // Update input to exclude delimiter definition
     }
 
-    const numbers = input.split(delimiter).map(Number);
+    const numbers = input.split(delimiter).map(Number).filter(num => num <= 1000);
     const negatives = numbers.filter(num => num < 0);
 
     if (negatives.length > 0) {

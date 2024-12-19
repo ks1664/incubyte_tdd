@@ -32,3 +32,12 @@ test('should throw an exception for negative numbers', () => {
 test('should include all negative numbers in the exception message', () => {
     expect(() => stringCalculator('1,-2,-3')).toThrow('negative numbers not allowed: -2, -3');
 });
+
+test('should ignore numbers greater than 1000', () => {
+    expect(stringCalculator('2,1001')).toBe(2);
+    expect(stringCalculator('1000,1')).toBe(1001);
+});
+
+test('should support custom delimiters of any length', () => {
+    expect(stringCalculator('//[***]\n1***2***3')).toBe(6);
+});
