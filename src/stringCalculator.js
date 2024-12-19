@@ -4,7 +4,10 @@ function stringCalculator(input) {
     let delimiter = /,|\n/; // Default delimiters: comma and newline
     if (input.startsWith('//')) {
         const parts = input.split('\n', 2);
-        delimiter = new RegExp(parts[0].slice(2)); // Extract and convert custom delimiter to regex
+        let customDelimiter = parts[0].slice(2); // Extract and convert custom delimiter to regex
+        // Escape special regex characters
+        customDelimiter = customDelimiter.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+        delimiter = new RegExp(customDelimiter);
         input = parts[1]; // Update input to exclude delimiter definition
     }
 
